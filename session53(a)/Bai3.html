@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function processArray(array, callback) {
+            let index = 0;
+            function processNext() {
+                if (index < array.length) {
+                    callback(array[index], index);
+                    index++;
+                    setTimeout(processNext, 1000);
+                }
+            }
+            processNext();
+        }
+        function printElement(element, index) {
+            console.log(`Phần tử thứ ${index + 1} : ${element}`);
+        }
+        const arr = [1,2,3,4,5,6,7,8,9,10,11,12];
+        processArray(arr, printElement);
+    </script>
+</body>
+</html>

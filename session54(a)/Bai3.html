@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function sumWithPromise(numbers) {
+            return new Promise((resolve, reject) => {
+                if (!Array.isArray(numbers)) {
+                    reject(new Error("Input phải là một mảng các số nguyên"));
+                }
+                const sum = numbers.reduce((accumulator, currentValue) => {
+                    if (typeof currentValue !== 'number') {
+                        reject(new Error("Mảng phải chỉ chứa các số nguyên"));
+                    }
+                    return accumulator + currentValue;
+                }, 0);
+
+                resolve(sum);
+            });
+        }
+        const numbers = [1, 2, 3, 4, 5, 6];
+        sumWithPromise(numbers)
+            .then((result) => {
+                console.log(`Tổng của mảng là: ${result}`);
+            })
+            .catch((error) => {
+                console.error(`Lỗi: ${error.message}`);
+            });
+
+    </script>
+</body>
+
+</html>

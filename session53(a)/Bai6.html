@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function task1(callback) {
+  setTimeout(() => {
+    console.log("Task 1 hoàn thành sau 1 giây");
+    callback();
+  }, 1000);
+}
+function task2(callback) {
+  setTimeout(() => {
+    console.log("Task 2 hoàn thành sau 1.5 giây");
+    callback();
+  }, 1500);
+}
+function task3(callback) {
+  setTimeout(() => {
+    console.log("Task 3 hoàn thành sau 2 giây");
+    callback();
+  }, 2000);
+}
+function executeTasksSequentially() {
+  task1(() => {
+    task2(() => {
+      task3(() => {
+        console.log("Tất cả các task đã hoàn thành");
+      });
+    });
+  });
+}
+executeTasksSequentially();
+    </script>
+</body>
+</html>
